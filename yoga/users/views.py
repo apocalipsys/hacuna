@@ -2,10 +2,11 @@ from flask import Blueprint,render_template,flash,redirect,url_for,request,sessi
 import stripe
 from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
-from yoga import db
+from yoga import db,login_manager
 from yoga.models import Admin
 from flask_login import login_user,logout_user,login_required
 from yoga.libs.sendemail import EnviarEmail
+
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
 
@@ -13,6 +14,15 @@ stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 
 users = Blueprint('users',__name__)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.query.get(user_id)
+
+
+
+
+
 
 
 @users.route('/users', methods=['GET','POST'])
@@ -49,6 +59,10 @@ def inscripciones():
 
 
     return render_template('inscripciones.html', form = form)
+
+
+
+
 
 
 @users.route('/login', methods=['GET','POST'])
