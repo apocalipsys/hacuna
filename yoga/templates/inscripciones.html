@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+   <script>
+AOS.init({
+  duration: 1200,
+})</script>
+
+
+    <title>{% block title %}Inscripciones | Hacuna {% endblock %}</title>
+<section class="page-section about-heading">
+      <div class="container">
+      <div class="item" data-aos="flip-down">
+
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static/contact.png" alt="">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static/intro.png" alt="">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static/avala.png" alt="">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static/avala2.png" alt="">
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper">Inscribite a nuestros cursos</span>
+                  <span class="section-heading-lower">Paga con tarjeta de credito</span>
+                </h2>
+
+                <!-- Formulario de contacto -->
+                <form  method="POST">
+
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label>{{ form.nombre.label(class='form-group') }}</label>
+                        <div class="input-group">
+                            {{ form.nombre(class='input-group') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ form.apellido.label(class='form-group') }}</label>
+                        <div class="input-group">
+                            {{ form.apellido(class='input-group') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label>{{ form.email.label(class='form-group') }}</label>
+                        <div class="input-group">
+                            {{ form.email(class='input-group') }}
+                             {% if form.email.errors %}
+                            <script>alert('El e-mail es incorrecto')</script>
+
+
+                            {% endif %}
+                        </div>
+
+                    </div>
+                     <div class="form-group">
+                        <label>{{ form.telefono.label(class='form-group') }}</label>
+                        <div class="input-group">
+                            {{ form.telefono(class='input-group') }}
+                                  {% if form.telefono.errors %}
+                            <script>alert('El telefono es incorrecto')</script>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        {{ form.submit(class="btn btn-primary btn-block py-2") }}
+
+                    </div>
+
+                </form>
+
+
+                <!-- Fin formulario de contacto -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <title>{% block title %}Listado de inscriptos | Hacuna {% endblock %}</title>
+<section class="page-section about-heading">
+      <div class="container">
+
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-8">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper">Listado</span>
+                  <span class="section-heading-lower">Lista de inscriptos que pagaron y que no</span>
+                </h2>
+                {% for lista in listado %}
+                  {% if lista.curso_pagado == 0 %}
+                    <h5> NO PAGO {{ lista }}</h5>
+                  {% elif lista.curso_pagado == None %}
+                    <h5> None {{ lista }}</h5>
+                  {% else %}
+                    <h5> SI PAGO {{ lista }}</h5>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

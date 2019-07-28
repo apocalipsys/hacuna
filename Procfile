@@ -1,0 +1,1 @@
+web: gunicorn yoga.__init__:app

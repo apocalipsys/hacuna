@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <title>{% block title %}GRACIAS POR TU COMPRA | Hacuna{% endblock %}</title>
+
+    <section class="page-section about-heading">
+
+         <script>
+AOS.init({
+  duration: 1200,
+})</script>
+
+
+<div class="item" data-aos="zoom-in">
+      <div class="container">
+
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                    {% if pagado == 1 %}
+                  <span class="section-heading-upper">Gracias por inscribirte y pagar el curso</span>
+                  <span class="section-heading-lower">En breve nos comunicaremos con vos</span>
+                    {% else %}
+                    <span class="section-heading-upper">Gracias</span>
+                  <span class="section-heading-lower">no me vas a poder hackear</span>
+                    {% endif %}
+                </h2>
+
+
+
+                <div class="item" data-aos="slide-up">
+                <p>Nos vamos cada tanto a Bs As a capacitarnos noma </p>
+                <p>Curabitur efficitur pellentesque tellus nec volutpat. In viverra mattis sem, facilisis condimentum mi rutrum ut. Quisque ut pellentesque dui.Nullam eu vehicula metus. Pellentesque id interdum elit. Aenean in efficitur enim.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    </section>
+{% endblock %}

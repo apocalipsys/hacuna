@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <title>{% block title %}GRACIAS POR TU COMPRA | Hacuna{% endblock %}</title>
+    <section class="page-section about-heading">
+      <div class="container">
+
+        <div class="about-heading-content">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-faded rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span class="section-heading-upper">PROCESANDO tu inscripcion</span>
+                  <span class="section-heading-lower">En breve nos comunicaremos con vos</span>
+
+                </h2>
+
+
+                  <form action="{{ url_for('users.pagos_curso', pagado=1) }}" method="POST">
+                    <script src="https://checkout.stripe.com/checkout.js"
+                            data-image="static/intro.png"
+                            class="stripe-button"
+                            data-key={{public_key}}
+                            data-amount="100"
+                            data-name="Diplomatura master"
+                            data-description = "Curso"
+                            data-locale="auto"
+                            data-zip-code="true"
+
+                    >
+
+                    </script>
+                       <button id="botoncito" class="btn btn-xl btn-primary w-250" type="submit">Pagar curso<strike>$4000</strike><span class="pl-4">$3500</span></button><br>
+                        <script>botoncito.click();</script>
+                  </form>
+
+                  <h2>VERIFICANDO</h2>
+                <p>Nos vamos cada tanto a Bs As a capacitarnos</p>
+                <p>Curabitur efficitur pellentesque tellus nec volutpat. In viverra mattis sem, facilisis condimentum mi rutrum ut. Quisque ut pellentesque dui.Nullam eu vehicula metus. Pellentesque id interdum elit. Aenean in efficitur enim.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

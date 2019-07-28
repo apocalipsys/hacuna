@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>{% block title %}Inicio | Home{% endblock %}</title>
+   <script>
+AOS.init({
+  duration: 1200,
+})</script>
+
+
+    <!-- Cabecera -->
+    <section class="page-section clearfix">
+     <div class="item" data-aos="flip-up">
+      <div class="container">
+        <div class="intro">
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="static/intro.png" alt="">
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-upper">Relajate y deja que el negro te abrace</span>
+              <span class="section-heading-lower">Te gustará</span>
+            </h2>
+            <p class="mb-3">Somos capos, enserio.
+            </p>
+            <div class="intro-button mx-auto">
+            <div class="item" data-aos="flip-down">
+              <a class="btn btn-primary btn-xl" href="{{ url_for('core.visitanos') }}">Visítanos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     </div>
+    </section>
+
+    <!-- Mensaje -->
+    <section class="page-section cta">
+     <div class="item" data-aos="flip-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Compromiso total</span>
+                <span class="section-heading-lower">Garantizado</span>
+              </h2>
+              <p class="mb-0">Sed pulvinar blandit elit id venenatis. Ut eget lacus neque. Nullam justo quam, efficitur nec turpis vitae, efficitur posuere ligula. Proin ut turpis orci. Aenean porta sodales lectus faucibus pellentesque. In sed felis iaculis, rhoncus felis a, maximus mi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+          <div class="item" data-aos="flip-right">
+
+      <div class="card text-center bg-light border-4" style= "margin: .25rem">
+        <div class="card-block">
+        <img src="static/avala.png" class="card-img-top rounded-circle" alt="...">
+        <div class="card-body cards ">
+          <h5 class="card-title text-uppercase text-black">YOGA-FIRE</h5>
+          <p class="card-text text-black">Dalsim <br> Se compone de frijoles, arroz con pimientos rojos finamente cortados en cubitos y cebollas, plátanos fritos, una ensalada de repollo con tomate y zanahoria, y una selección de carne entre pollo, pescado, carne de cerdo o de ternera con cebollas asadas.</p>
+          <p style="display: none;" >La carne que viene con un casado a la parrilla o salteados, pero nunca frito. A veces, el casado incluye papas fritas o verduras adicionales, tales como los aguacates.</p>
+          <a href="#"  class="btn btn-warning">Leer Mas...</a>
+        </div>
+       </div>
+       </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+          <div class="item" data-aos="fade-left">
+
+      <div class="card text-center bg-light border-4" style= "margin: .5rem">
+        <div class="card-block">
+        <img src="static/avala2.png" class="card-img-top rounded-circle" alt="...">
+        <div class="card-body cards ">
+          <h5 class="card-title text-uppercase text-black">HORIUKEN</h5>
+          <p class="card-text text-black">Casado o comida típica, es el plato más común en Costa Rica. <br> Se compone de frijoles, arroz con pimientos rojos finamente cortados en cubitos y cebollas, plátanos fritos, una ensalada de repollo con tomate y zanahoria, y una selección de carne entre pollo, pescado, carne de cerdo o de ternera con cebollas asadas.</p>
+          <p style="display: none;" >La carne que viene con un casado a la parrilla o salteados, pero nunca frito. A veces, el casado incluye papas fritas o verduras adicionales, tales como los aguacates.</p>
+          <a href="#" class="btn btn-warning">Leer Mas...</a>
+        </div>
+       </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+         <div class="item" data-aos="fade-right">
+
+      <div class="card text-center bg-light border-4" style= "margin: 1rem">
+        <div class="card-block">
+        <img src="static/products-01.png" class="card-img-top rounded-circle" alt="...">
+        <div class="card-body cards ">
+          <h5 class="card-title text-uppercase text-black">ADUKEN</h5>
+          <p class="card-text text-black">Casado o comida típica, es el plato más común en Costa Rica. <br> Se compone de frijoles, arroz con pimientos rojos finamente cortados en cubitos y cebollas, plátanos fritos, una ensalada de repollo con tomate y zanahoria, y una selección de carne entre pollo, pescado, carne de cerdo o de ternera con cebollas asadas.</p>
+          <p style="display: none;" >La carne que viene con un casado a la parrilla o salteados, pero nunca frito. A veces, el casado incluye papas fritas o verduras adicionales, tales como los aguacates.</p>
+          <a href="#" class="btn btn-warning">Leer Mas...</a>
+        </div>
+       </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+          <div class="item" data-aos="fade-down">
+
+      <div class="card text-center bg-light border-4" style= "margin: 1.5rem">
+        <div class="card-block">
+        <img src="static/products-03.png" class="card-img-top rounded-circle" alt="...">
+        <div class="card-body cards ">
+          <h5 class="card-title text-uppercase text-black">KONTANTEBRUKEN</h5>
+          <p class="card-text text-black">Casado o comida típica, es el plato más común en Costa Rica. <br> Se compone de frijoles, arroz con pimientos rojos finamente cortados en cubitos y cebollas, plátanos fritos, una ensalada de repollo con tomate y zanahoria, y una selección de carne entre pollo, pescado, carne de cerdo o de ternera con cebollas asadas.</p>
+          <p style="display: none;" >La carne que viene con un casado a la parrilla o salteados, pero nunca frito. A veces, el casado incluye papas fritas o verduras adicionales, tales como los aguacates.</p>
+          <a href="#"  class="btn btn-warning">Leer Mas...</a>
+        </div>
+       </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+
+
+{% endblock %}
