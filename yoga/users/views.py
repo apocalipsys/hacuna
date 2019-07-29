@@ -17,8 +17,8 @@ users = Blueprint('users',__name__)
 
 @login_manager.user_loader
 def load_user(user_id):
-    #return Admin.query.get(user_id)
-    return db.session.query(Admin).get(user_id)
+    return Admin.query.get(user_id)
+    #return db.session.query(Admin).get(user_id)
 
 
 
@@ -64,11 +64,7 @@ def inscripciones():
 
 @users.route('/login', methods=['GET','POST'])
 def login():
-    try:
-        print(session['email'])
-        session['email'] = None
-    except:
-        pass
+
 
     form = LoginForm()
 
@@ -79,9 +75,12 @@ def login():
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
         if user.check_password(form.password.data) and user.email == form.email.data:
             session['email']=form.email.data
-            login_user(user)
-            flash('ENTRASTE','info')
-
+            try:
+                login_user(user)
+                flash('ENTRASTE','info')
+            except:
+                session.rollback()
+                print('hubo una excepcion, y se hizo session.rollback()')
             next = request.args.get('next')
             if next == None or not next[0] == '/':
                 next = url_for('core.home')

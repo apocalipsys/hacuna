@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template
-from yoga import login_manager
-from yoga.models import Admin
+#from yoga import login_manager
+#from yoga.models import Admin,db
 
 core = Blueprint('core',__name__)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Admin.query.get(user_id)
-
+#@login_manager.user_loader
+#def load_user(user_id):
+#    return Admin.query.get(user_id)
+    #return db.session.query(Admin).get(user_id)
 
 @core.route('/')
 def home():
