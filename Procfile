@@ -1,1 +1,1 @@
-web: gunicorn yoga.__init__:app
+web: gunicorn yoga.__init__:app --preload

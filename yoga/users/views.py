@@ -17,8 +17,8 @@ users = Blueprint('users',__name__)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Admin.query.get(user_id)
-
+    #return Admin.query.get(user_id)
+    return db.session.query(Admin).get(user_id)
 
 
 
