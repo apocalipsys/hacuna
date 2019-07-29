@@ -33,7 +33,7 @@ class Inscriptos(db.Model):
 
 
 
-class Admin(db.Model, UserMixin):
+class Admin(UserMixin,db.Model):
     __tablename__ = 'admin'
     id = Column(Integer,primary_key=True,unique=True)
     email = Column(String(40))

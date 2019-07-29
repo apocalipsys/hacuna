@@ -1,7 +1,12 @@
 from flask import Blueprint, render_template
-
+from yoga import login_manager
+from yoga.models import Admin
 
 core = Blueprint('core',__name__)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.query.get(user_id)
 
 
 @core.route('/')
