@@ -4,8 +4,8 @@ from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
 from yoga import db,login_manager
 from yoga.models import Admin
-from flask_login import login_user,logout_user,login_required,current_user
-from yoga.libs.sendemail import EnviarEmail
+from flask_login import login_user,logout_user,login_required
+#from yoga.libs.sendemail import EnviarEmail
 
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
