@@ -4,7 +4,7 @@ from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
 from yoga import db,login_manager
 from yoga.models import Admin
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 from yoga.libs.sendemail import EnviarEmail
 
 
@@ -18,9 +18,6 @@ users = Blueprint('users',__name__)
 @login_manager.user_loader
 def load_user(user_id):
     return Admin.query.get(user_id)
-
-
-
 
 
 
@@ -81,6 +78,7 @@ def login():
         if user == None:
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
         if user.check_password(form.password.data) and user.email == form.email.data:
+            session['email']=form.email.data
             login_user(user)
             flash('ENTRASTE','info')
 
@@ -149,7 +147,8 @@ def pagos_curso(pagado):
     )
 
     confirmado = Inscriptos.query.filter_by(email=session['email']).first()
-   # print(confirmado.email)
+    #print(current_user)
+    print(confirmado.email)
     for k,v in customer.items():
         print(k,v)
 

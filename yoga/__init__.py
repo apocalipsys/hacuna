@@ -22,6 +22,7 @@ db = SQLAlchemy(app)
 Migrate(app,db)
 
 ##LOGIN CONFIGURATION
+
 login_manager = LoginManager()
 login_manager.login_message = 'Debe ser administrador para ingresar a esta pagina'
 login_manager.login_message_category = 'danger'
