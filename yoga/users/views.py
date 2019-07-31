@@ -21,7 +21,8 @@ def inscripciones():
 
 
     form = InscripcionesForm()
-
+    if current_user.is_authenticated:
+        logout_user()
     if form.validate_on_submit():
         nombre = form.nombre.data
         apellido = form.apellido.data
