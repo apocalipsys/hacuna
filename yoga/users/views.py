@@ -5,7 +5,6 @@ from yoga.models import Inscriptos
 from yoga import db
 from yoga.models import Admin
 from flask_login import login_user,logout_user,login_required
-#from yoga.libs.sendemail import EnviarEmail
 from yoga import login_manager
 
 
@@ -59,10 +58,8 @@ def login():
         user = Admin.query.filter_by(email=form.email.data).first()
         if user == None:
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
-        if form.email.data == user.email and user.check_password(form.password):
+        if form.email.data == user.email and user.check_password(form.password.data):
             try:
-                #db.session['email'] = form.email.data
-                #db.session.commit()
                 login_user(user)
                 flash('ENTRASTE','info')
             except:
@@ -73,31 +70,6 @@ def login():
                 next = url_for('.listado')
             return redirect(next)
     return render_template('login.html', form=form)
-
-
-
-'''
-def login():
-    form = LoginForm()
-    user = Admin.query.filter_by(email=form.email.data).first()
-    if form.validate_on_submit():
-        if form.check_email(form.email) and user.check_password(form.password.data):
-            try:
-                login_user(user)
-                flash('ENTRASTE', 'info')
-            except:
-                session.rollback()
-                print('hubo una excepcion, y se hizo session.rollback()')
-            next = request.args.get('next')
-            if next == None or not next[0] == '/':
-                next = url_for('.listado')
-
-            return redirect(next)
-
-    return render_template('login.html', form=form)
-
-'''
-
 
 
 @users.route('/logout')
