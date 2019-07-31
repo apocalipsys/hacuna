@@ -5,7 +5,6 @@ from yoga.models import Inscriptos
 from yoga import db
 from yoga.models import Admin
 from flask_login import login_user,logout_user,login_required
-from yoga import login_manager
 
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
@@ -15,9 +14,7 @@ stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 users = Blueprint('users',__name__)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Admin.query.get(user_id)
+
 
 @users.route('/users', methods=['GET','POST'])
 def inscripciones():

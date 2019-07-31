@@ -22,11 +22,16 @@ db = SQLAlchemy(app)
 Migrate(app,db)
 
 ##LOGIN CONFIGURATION
+from yoga.models import Admin
 
 login_manager = LoginManager()
 login_manager.login_message = 'Debe ser administrador para ingresar a esta pagina'
 login_manager.login_message_category = 'danger'
 login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.query.get(user_id)
 
 login_manager.login_view = 'users.login'
 
