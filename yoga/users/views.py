@@ -143,7 +143,7 @@ def pagos_curso(pagado):
 
     #aviso_inscripcion = EnviarEmail(session['email'])
     #aviso_inscripcion.send()
-
+    logout_user()
     return render_template('gracias.html',pagado=pagado,)
     #return redirect(url_for('users.gracias'))
 
