@@ -89,7 +89,7 @@ def logout():
     return redirect(url_for('core.home'))
 
 @users.route('/register', methods = ['GET','POST'])
-#@login_required
+@login_required
 def register():
 
     form = RegistroForm()

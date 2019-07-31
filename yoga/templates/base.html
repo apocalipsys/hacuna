@@ -70,12 +70,7 @@
               <a class="nav-link text-uppercase text-expanded" href="{{ url_for('users.register') }}">Registro</a>
              </li>
               {% else %}
-              <li class="nav-item px-lg-4">
-                <a class="nav-link text-uppercase text-expanded" href="{{ url_for('users.inscripciones') }}">Incripciones</a>
-              </li>
-              <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('users.login') }}">Login</a>
-              </li>
+
             <li class="nav-item active px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="{{ url_for('core.home') }}">Inicio</a>
             </li>
@@ -91,6 +86,12 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="{{ url_for('core.contacto') }}">Contacto</a>
             </li>
+             <li class="nav-item px-lg-4">
+                <a class="nav-link text-uppercase text-expanded" href="{{ url_for('users.inscripciones') }}">Incripciones</a>
+              </li>
+              <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="{{ url_for('users.login') }}">Login</a>
+              </li>
 
                {% endif %}
           </ul>
