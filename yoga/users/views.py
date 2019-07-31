@@ -93,7 +93,7 @@ def login():
             if next == None or not next[0] == '/':
                 print('sin error hasta aca10')
 
-                next = url_for('core.home')
+                next = url_for('.listado')
                 print('sin error hasta aca10')
 
             return redirect(next)

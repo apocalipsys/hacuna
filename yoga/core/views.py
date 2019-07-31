@@ -9,7 +9,7 @@ core = Blueprint('core',__name__)
 #    return Admin.query.get(user_id)
     #return db.session.query(Admin).get(user_id)
 
-@core.route('/')
+@core.route('/', methods=['GET','POST'])
 def home():
     print('aver aver aver si llega aca')
     return render_template('index.html')
