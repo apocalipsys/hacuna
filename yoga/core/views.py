@@ -11,6 +11,7 @@ core = Blueprint('core',__name__)
 
 @core.route('/')
 def home():
+    print('aver aver aver si llega aca')
     return render_template('index.html')
 
 @core.route('/contacto')

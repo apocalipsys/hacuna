@@ -94,6 +94,7 @@ def login():
                 print('sin error hasta aca10')
 
                 next = url_for('core.home')
+                print('sin error hasta aca10')
 
             return redirect(next)
 
