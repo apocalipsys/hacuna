@@ -4,7 +4,7 @@ from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
 from yoga import db
 from yoga.models import Admin
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
@@ -18,6 +18,7 @@ users = Blueprint('users',__name__)
 
 @users.route('/users', methods=['GET','POST'])
 def inscripciones():
+
 
     form = InscripcionesForm()
 
