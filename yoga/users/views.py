@@ -56,7 +56,7 @@ def login():
     form = LoginForm()
     user = Admin.query.filter_by(email=form.email.data).first()
     if form.validate_on_submit():
-        if form.check_email(form.email.data) and user.check_password(form.password.data):
+        if form.check_email(form.email) and user.check_password(form.password.data):
             try:
                 login_user(user)
                 flash('ENTRASTE', 'info')
