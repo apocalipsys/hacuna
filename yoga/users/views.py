@@ -108,20 +108,15 @@ def register():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        print('sin error hasta aca1')
         if form.check_email(form.email):
             flash('El email ya existe')
             return render_template('registrar.html',form = form)
-        print('sin error hasta aca2')
 
         user = Admin(email, password)
-        print('sin error hasta aca3')
 
         db.session.add(user)
-        print('sin error hasta aca4')
 
         db.session.commit()
-        print('sin error hasta aca5')
 
         flash('Usuario agregado','info')
         return redirect(url_for('core.home'))
