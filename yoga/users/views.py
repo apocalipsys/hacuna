@@ -74,10 +74,9 @@ def login():
 
             try:
                 print('sin error hasta aca5')
-                session.remove()
-                session['email'] = form.email.data
+                db.session['email'] = form.email.data
                 print('sin error hasta aca6')
-
+                db.session.commit()
                 login_user(user)
                 print('sin error hasta aca7')
 
@@ -85,7 +84,7 @@ def login():
             except:
                 print('sin error hasta aca8')
 
-                session.rollback()
+
                 print('hubo una excepcion, y se hizo session.rollback()')
             next = request.args.get('next')
             print('sin error hasta aca9')
@@ -94,7 +93,7 @@ def login():
                 print('sin error hasta aca10')
 
                 next = url_for('.listado')
-                print('sin error hasta aca10')
+                print('sin error hasta aca11')
 
             return redirect(next)
 
