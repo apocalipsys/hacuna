@@ -59,7 +59,7 @@ def login():
         user = Admin.query.filter_by(email=form.email.data).first()
         if user == None:
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
-        if form.check_email(form.email) and user.check_password(form.password):
+        if form.email.data == user.email and user.check_password(form.password):
             try:
                 #db.session['email'] = form.email.data
                 #db.session.commit()
