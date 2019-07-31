@@ -6,6 +6,7 @@ from yoga import db
 from yoga.models import Admin
 from flask_login import login_user,logout_user,login_required
 #from yoga.libs.sendemail import EnviarEmail
+from yoga import login_manager
 
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
@@ -15,6 +16,9 @@ stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 users = Blueprint('users',__name__)
 
+@login_manager.user_loader
+def load_user(user_id):
+    return Admin.query.get(user_id)
 
 @users.route('/users', methods=['GET','POST'])
 def inscripciones():
@@ -47,57 +51,45 @@ def inscripciones():
 
     return render_template('inscripciones.html', form = form)
 
-
-
-
-
-
 @users.route('/login', methods=['GET','POST'])
 def login():
-
-
     form = LoginForm()
-
+    user = Admin.query.filter_by(username=form.username.data).first()
     if form.validate_on_submit():
-        print('sin error hasta aca1')
-
-
-        user = Admin.query.filter_by(email=form.email.data).first()
-        print('sin error hasta aca2')
-
-        if user == None:
-            print('sin error hasta aca3')
-
-            return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
-        if user.check_password(form.password.data) and user.email == form.email.data:
-            print('sin error hasta aca4')
-
+        if form.check_email(form.email.data) and user.check_password(form.password.data):
             try:
-                print('sin error hasta aca5')
-                db.session['email'] = form.email.data
-                print('sin error hasta aca6')
-                db.session.commit()
                 login_user(user)
-                print('sin error hasta aca7')
-
-                flash('ENTRASTE','info')
+                flash('ENTRASTE', 'info')
             except:
-                print('sin error hasta aca8')
-
-
+                session.rollback()
                 print('hubo una excepcion, y se hizo session.rollback()')
             next = request.args.get('next')
-            print('sin error hasta aca9')
-
             if next == None or not next[0] == '/':
-                print('sin error hasta aca10')
-
                 next = url_for('.listado')
-                print('sin error hasta aca11')
 
             return redirect(next)
 
     return render_template('login.html', form=form)
+
+'''
+def login():
+
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = Admin.query.filter_by(email=form.email.data).first()
+        if user == None:
+            return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
+        if user.check_password(form.password.data) and user.email == form.email.data:
+            db.session['email'] = form.email.data
+            db.session.commit()
+            login_user(user)
+            flash('ENTRASTE','info')
+            next = request.args.get('next')
+            if next == None or not next[0] == '/':
+                next = url_for('.listado')
+            return redirect(next)
+    return render_template('login.html', form=form)
+'''
 
 
 @users.route('/logout')

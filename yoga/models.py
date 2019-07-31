@@ -2,7 +2,6 @@ from yoga import db
 from sqlalchemy import Column,Integer,String,Boolean
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from yoga import login_manager
 
 class Inscriptos(db.Model):
 
@@ -26,9 +25,6 @@ class Inscriptos(db.Model):
         return f'E-mail del inscripto es: {self.email}\n Curso pagado: {pagado}'
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Admin.query.get(user_id)
 
 
 
