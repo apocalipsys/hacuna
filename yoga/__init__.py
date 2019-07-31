@@ -3,8 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
 from flask_login import LoginManager
-#from commands import create_tables
-#from yoga.models import Admin
+
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 

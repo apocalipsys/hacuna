@@ -2,7 +2,7 @@ from flask import Blueprint,render_template,flash,redirect,url_for,request,sessi
 import stripe
 from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
-from yoga import db,login_manager
+from yoga import db
 from yoga.models import Admin
 from flask_login import login_user,logout_user,login_required
 #from yoga.libs.sendemail import EnviarEmail
@@ -15,19 +15,9 @@ stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
 users = Blueprint('users',__name__)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Admin.query.get(user_id)
-    #return db.session.query(Admin).get(user_id)
-
-
 
 @users.route('/users', methods=['GET','POST'])
 def inscripciones():
-    try:
-       session['email'] = None
-    except:
-        pass
 
     form = InscripcionesForm()
 
@@ -74,8 +64,9 @@ def login():
         if user == None:
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
         if user.check_password(form.password.data) and user.email == form.email.data:
-            session['email']=form.email.data
+
             try:
+                session['email'] = form.email.data
                 login_user(user)
                 flash('ENTRASTE','info')
             except:
