@@ -43,7 +43,9 @@ def inscripciones():
 
         db.session.add(user)
         db.session.commit()
+        db.engine.dispose()
         men = flash('Alumno inscripto','info')
+
 
         return render_template('procesando.html',public_key=public_key,men = men)
 
@@ -63,6 +65,8 @@ def login():
             try:
                 login_user(user)
                 flash('ENTRASTE','info')
+                db.engine.dispose()
+
             except:
                 session.rollback()
                 print('hubo una excepcion, y se hizo session.rollback()')
@@ -98,6 +102,8 @@ def register():
         db.session.add(user)
 
         db.session.commit()
+        db.engine.dispose()
+
 
         flash('Usuario agregado','info')
         return redirect(url_for('core.home'))
@@ -144,6 +150,8 @@ def pagos_curso(pagado):
     #aviso_inscripcion = EnviarEmail(session['email'])
     #aviso_inscripcion.send()
     logout_user()
+    db.engine.dispose()
+
     return render_template('gracias.html',pagado=pagado,)
     #return redirect(url_for('users.gracias'))
 
