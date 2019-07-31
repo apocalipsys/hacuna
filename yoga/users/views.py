@@ -74,7 +74,7 @@ def login():
 
             try:
                 print('sin error hasta aca5')
-
+                session.remove()
                 session['email'] = form.email.data
                 print('sin error hasta aca6')
 

@@ -12,6 +12,7 @@ app.config['SECRET_KEY'] = os.urandom(64)
 #app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://martincholoco:1qaz2wsx@localhost/hacuna'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = False
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
