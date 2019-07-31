@@ -15,7 +15,7 @@ def home():
 
 @core.route('/contacto')
 def contacto():
-    return render_template('contact.html')\
+    return render_template('contact.html')
 
 @core.route('/visitanos')
 def visitanos():

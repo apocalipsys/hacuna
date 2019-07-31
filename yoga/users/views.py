@@ -146,11 +146,11 @@ def pagos_curso(pagado):
     confirmado.curso_pagado = pagado
     db.session.add(confirmado)
     db.session.commit()
+    db.engine.dispose()
 
     #aviso_inscripcion = EnviarEmail(session['email'])
     #aviso_inscripcion.send()
     logout_user()
-    db.engine.dispose()
 
     return render_template('gracias.html',pagado=pagado,)
     #return redirect(url_for('users.gracias'))
