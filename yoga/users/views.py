@@ -88,7 +88,11 @@ def login():
                 session.rollback()
                 print('hubo una excepcion, y se hizo session.rollback()')
             next = request.args.get('next')
+            print('sin error hasta aca9')
+
             if next == None or not next[0] == '/':
+                print('sin error hasta aca10')
+
                 next = url_for('core.home')
 
             return redirect(next)
