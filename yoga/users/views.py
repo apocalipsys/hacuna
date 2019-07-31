@@ -4,7 +4,7 @@ from yoga.users.forms import InscripcionesForm,LoginForm, RegistroForm
 from yoga.models import Inscriptos
 from yoga import db
 from yoga.models import Admin
-from flask_login import login_user,logout_user,login_required,current_user
+from flask_login import login_user,logout_user,login_required
 
 
 public_key = "pk_test_TYooMQauvdEDq54NiTphI7jx"
@@ -42,10 +42,10 @@ def inscripciones():
                 flash('El email ya existe y ha pagado el curso, ingrese uno diferente','danger')
 
                 return render_template('inscripciones.html', form=form)
+        db.engine.dispose()
 
         db.session.add(user)
         db.session.commit()
-        db.engine.dispose()
         men = flash('Alumno inscripto','info')
 
 
