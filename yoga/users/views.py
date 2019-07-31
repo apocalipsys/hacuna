@@ -54,7 +54,7 @@ def inscripciones():
 @users.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
-    user = Admin.query.filter_by(username=form.username.data).first()
+    user = Admin.query.filter_by(email=form.email.data).first()
     if form.validate_on_submit():
         if form.check_email(form.email.data) and user.check_password(form.password.data):
             try:
