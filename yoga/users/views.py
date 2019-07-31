@@ -59,17 +59,32 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
+        print('sin error hasta aca1')
+
 
         user = Admin.query.filter_by(email=form.email.data).first()
+        print('sin error hasta aca2')
+
         if user == None:
+            print('sin error hasta aca3')
+
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
         if user.check_password(form.password.data) and user.email == form.email.data:
+            print('sin error hasta aca4')
 
             try:
+                print('sin error hasta aca5')
+
                 session['email'] = form.email.data
+                print('sin error hasta aca6')
+
                 login_user(user)
+                print('sin error hasta aca7')
+
                 flash('ENTRASTE','info')
             except:
+                print('sin error hasta aca8')
+
                 session.rollback()
                 print('hubo una excepcion, y se hizo session.rollback()')
             next = request.args.get('next')
