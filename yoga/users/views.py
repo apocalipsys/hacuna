@@ -22,6 +22,8 @@ def inscripciones():
 
     form = InscripcionesForm()
     try:
+        db.engine.dispose()
+
         logout_user()
     except:
         db.session.rollback()
@@ -58,14 +60,16 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
+        db.engine.dispose()
         user = Admin.query.filter_by(email=form.email.data).first()
         if user == None:
             return render_template('login.html', men=flash('Usuario o contrasenia invalidos','danger'),form=form)
         if form.email.data == user.email and user.check_password(form.password.data):
             try:
+                db.engine.dispose()
                 login_user(user)
                 flash('ENTRASTE','info')
-                db.engine.dispose()
+
 
             except:
                 session.rollback()
@@ -93,16 +97,17 @@ def register():
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
+        db.engine.dispose()
         if form.check_email(form.email):
             flash('El email ya existe')
             return render_template('registrar.html',form = form)
+        db.engine.dispose()
 
         user = Admin(email, password)
 
         db.session.add(user)
 
         db.session.commit()
-        db.engine.dispose()
 
 
         flash('Usuario agregado','info')
@@ -136,6 +141,7 @@ def pagos_curso(pagado):
         currency='usd',
         description='Master Yogui diplomatura'
     )
+    db.engine.dispose()
 
     confirmado = Inscriptos.query.filter_by(email=session['email']).first()
     #print(current_user)
@@ -144,9 +150,10 @@ def pagos_curso(pagado):
         print(k,v)
 
     confirmado.curso_pagado = pagado
+    db.engine.dispose()
+
     db.session.add(confirmado)
     db.session.commit()
-    db.engine.dispose()
 
     #aviso_inscripcion = EnviarEmail(session['email'])
     #aviso_inscripcion.send()
@@ -158,5 +165,7 @@ def pagos_curso(pagado):
 @users.route('/listado')
 @login_required
 def listado():
+    db.engine.dispose()
+
     listado = Inscriptos.query.all()
     return render_template('listado.html',listado=listado)
