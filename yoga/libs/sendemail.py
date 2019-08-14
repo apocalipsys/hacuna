@@ -108,9 +108,9 @@ class EnviarEmail:
         self.msg = email.message.Message()
         self.msg['Subject'] = 'Gracias por inscribirte al curso de Master en YOGA'
 
-        self.msg['From'] = 'martinvargas82@gmail.com'
+        self.msg['From'] = 'x'
         self.msg['To'] = self.email
-        self.password = "nirvanakurt"
+        self.password = "x"
         self.msg.add_header('Content-Type', 'text/html')
         self.msg.set_payload(self.email_content)
 
