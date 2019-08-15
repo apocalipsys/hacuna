@@ -1,1 +1,2 @@
-# hacuna
+# hacuna web app con Flask
+
